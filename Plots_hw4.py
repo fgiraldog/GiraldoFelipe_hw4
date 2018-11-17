@@ -39,17 +39,32 @@ plt.xlabel('$x$')
 plt.legend()
 #plt.show()
 
-x_PDE = np.linspace(0,50,50)
-y_PDE = np.linspace(50,0,50)
+x_PDE = np.arange(0,50,1)
+y_PDE = np.arange(0,50,1)
 datos_PDE = np.genfromtxt('PDE.dat', delimiter = ',')
 
 
-z_abiertas_0 = datos_PDE[0:49][0:49]
+z_fijas_0 = datos_PDE[0:50][0:50]
+z_fijas_1 = datos_PDE[50:101][0:50]
+z_fijas_2 = datos_PDE[100:151][0:50]
+z_fijas_3 = datos_PDE[150::][0:50]
 
-print(z_abiertas_0[27][12])
+x,y = np.meshgrid(x_PDE,y_PDE, sparse = True)
 
 fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-surf = ax.plot_surface(x_PDE, y_PDE, z_abiertas_0, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+ax = fig.add_subplot(221, projection='3d')
+surf = ax.plot_surface(x, y, z_fijas_0, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+fig.colorbar(surf, shrink=0.5, aspect=5)
+ax = fig.add_subplot(222, projection='3d')
+surf = ax.plot_surface(x, y, z_fijas_1, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+fig.colorbar(surf, shrink=0.5, aspect=5)
+ax = fig.add_subplot(223, projection='3d')
+surf = ax.plot_surface(x, y, z_fijas_2, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+fig.colorbar(surf, shrink=0.5, aspect=5)
+ax = fig.add_subplot(224, projection='3d')
+surf = ax.plot_surface(x, y, z_fijas_3, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
 plt.show()
+
+
+
