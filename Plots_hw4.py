@@ -4,16 +4,6 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.animation as ani
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
-import os as bash
-
-'''
-#En estas cuatro lineas de codigo se ejecuta los archivos de C++ para ODE y PDE
-comando_ODE = './ODE.o'
-comando_PDE = './PDE.o'
-
-#bash.system(comando_ODE)
-#bash.system(comando_PDE)
-'''
 
 #ODE
 #Importacion de los datos de ODE
@@ -31,8 +21,8 @@ tiempo_pos_70, x_70, y_70, tiempo_vel_70, vx_70, vy_70 = datos_ODE[8617::,0], da
 #Grafica del recorrido del proyectil para 45 grados
 plt.figure()
 plt.plot(x_45, y_45)
-plt.ylabel('$y$')
-plt.xlabel('$x$')
+plt.ylabel('$y (m)$')
+plt.xlabel('$x (m)$')
 plt.savefig('ODE_45.pdf')
 
 #Grafica del recorrido del proyectil para cada uno de los angulos propuestos 
@@ -44,8 +34,8 @@ plt.plot(x_40, y_40, label = '$40^o$')
 plt.plot(x_50, y_50, label = '$50^o$')
 plt.plot(x_60, y_60, label = '$60^o$')
 plt.plot(x_70, y_70, label = '$70^o$')
-plt.ylabel('$y$')
-plt.xlabel('$x$')
+plt.ylabel('$y (m)$')
+plt.xlabel('$x (m)$')
 plt.legend()
 plt.savefig('ODE_todos.pdf')
 
