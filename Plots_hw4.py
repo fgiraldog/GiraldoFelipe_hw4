@@ -5,7 +5,11 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import os as bash
 
-#comando_ODE = './a.out >> datos_ODE.dat'
+comando_ODE = './ODE.o'
+comando_PDE = './PDE.o'
+
+bash.system(comando_ODE)
+bash.system(comando_PDE)
 
 #ODE
 
@@ -44,78 +48,115 @@ plt.savefig('ODE_todos.pdf')
 #PDE
 
 #3D
-x_PDE = np.arange(0,50,1)
-y_PDE = np.arange(0,50,1)
+x_PDE = np.arange(0,0.5,0.01)
+y_PDE = np.arange(0,0.5,0.01)
 x,y = np.meshgrid(x_PDE,y_PDE, sparse = True)
 datos_PDE = np.genfromtxt('PDE.dat', delimiter = ',')
 
 
 z_fijas_0 = datos_PDE[0:50][0:50]
-z_fijas_1 = datos_PDE[50:101][0:50]
-z_fijas_2 = datos_PDE[100:151][0:50]
-z_fijas_3 = datos_PDE[150:201][0:50]
+z_fijas_1 = datos_PDE[51:101][0:50]
+z_fijas_2 = datos_PDE[102:152][0:50]
+z_fijas_3 = datos_PDE[153:203][0:50]
 
-fig = plt.figure(figsize = (10,8))
-ax = fig.add_subplot(221, projection='3d')
-surf = ax.plot_surface(x, y, z_fijas_0, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+fig = plt.figure(figsize = (15,10))
+ax1 = fig.add_subplot(221, projection='3d')
+surf = ax1.plot_surface(x, y, z_fijas_0, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
-ax = fig.add_subplot(222, projection='3d')
-surf = ax.plot_surface(x, y, z_fijas_1, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+ax1.set_xlabel('Distancia ($m$)')
+ax1.set_ylabel('Distancia ($m$)')
+ax1.set_zlabel('Temperatura ($^o C$)')
+ax2 = fig.add_subplot(222, projection='3d')
+surf = ax2.plot_surface(x, y, z_fijas_1, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
-ax = fig.add_subplot(223, projection='3d')
-surf = ax.plot_surface(x, y, z_fijas_2, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+ax2.set_xlabel('Distancia ($m$)')
+ax2.set_ylabel('Distancia ($m$)')
+ax2.set_zlabel('Temperatura ($^o C$)')
+ax3 = fig.add_subplot(223, projection='3d')
+surf = ax3.plot_surface(x, y, z_fijas_2, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
-ax = fig.add_subplot(224, projection='3d')
-surf = ax.plot_surface(x, y, z_fijas_3, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+ax3.set_xlabel('Distancia ($m$)')
+ax3.set_ylabel('Distancia ($m$)')
+ax3.set_zlabel('Temperatura ($^o C$)')
+ax4 = fig.add_subplot(224, projection='3d')
+surf = ax4.plot_surface(x, y, z_fijas_3, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
+ax4.set_xlabel('Distancia ($m$)')
+ax4.set_ylabel('Distancia ($m$)')
+ax4.set_zlabel('Temperatura ($^o C$)')
 plt.savefig('PDE_fijas.pdf')
 
-z_abiertas_0 = datos_PDE[200:251][0:50]
-z_abiertas_1 = datos_PDE[250:301][0:50]
-z_abiertas_2 = datos_PDE[300:351][0:50]
-z_abiertas_3 = datos_PDE[350:401][0:50]
 
-fig = plt.figure(figsize = (10,8))
-ax = fig.add_subplot(221, projection='3d')
-surf = ax.plot_surface(x, y, z_abiertas_0, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+z_abiertas_0 = datos_PDE[204:254][0:50]
+z_abiertas_1 = datos_PDE[255:305][0:50]
+z_abiertas_2 = datos_PDE[306:356][0:50]
+z_abiertas_3 = datos_PDE[357:407][0:50]
+
+fig = plt.figure(figsize = (15,10))
+ax1 = fig.add_subplot(221, projection='3d')
+surf = ax1.plot_surface(x, y, z_abiertas_0, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
-ax = fig.add_subplot(222, projection='3d')
-surf = ax.plot_surface(x, y, z_abiertas_1, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+ax1.set_xlabel('Distancia ($m$)')
+ax1.set_ylabel('Distancia ($m$)')
+ax1.set_zlabel('Temperatura ($^o C$)')
+ax2 = fig.add_subplot(222, projection='3d')
+surf = ax2.plot_surface(x, y, z_abiertas_1, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
-ax = fig.add_subplot(223, projection='3d')
-surf = ax.plot_surface(x, y, z_abiertas_2, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+ax2.set_xlabel('Distancia ($m$)')
+ax2.set_ylabel('Distancia ($m$)')
+ax2.set_zlabel('Temperatura ($^o C$)')
+ax3 = fig.add_subplot(223, projection='3d')
+surf = ax3.plot_surface(x, y, z_abiertas_2, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
-ax = fig.add_subplot(224, projection='3d')
-surf = ax.plot_surface(x, y, z_abiertas_3, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+ax3.set_xlabel('Distancia ($m$)')
+ax3.set_ylabel('Distancia ($m$)')
+ax3.set_zlabel('Temperatura ($^o C$)')
+ax4 = fig.add_subplot(224, projection='3d')
+surf = ax4.plot_surface(x, y, z_abiertas_3, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
+ax4.set_xlabel('Distancia ($m$)')
+ax4.set_ylabel('Distancia ($m$)')
+ax4.set_zlabel('Temperatura ($^o C$)')
 plt.savefig('PDE_abiertas.pdf')
 
-z_peri_0 = datos_PDE[400:451][0:50]
-z_peri_1 = datos_PDE[450:501][0:50]
-z_peri_2 = datos_PDE[500:551][0:50]
-z_peri_3 = datos_PDE[550::][0:50]
+z_peri_0 = datos_PDE[408:458][0:50]
+z_peri_1 = datos_PDE[459:509][0:50]
+z_peri_2 = datos_PDE[510:560][0:50]
+z_peri_3 = datos_PDE[561:611][0:50]
 
-fig = plt.figure(figsize = (10,8))
-ax = fig.add_subplot(221, projection='3d')
-surf = ax.plot_surface(x, y, z_peri_0, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+fig = plt.figure(figsize = (15,10))
+ax1 = fig.add_subplot(221, projection='3d')
+surf = ax1.plot_surface(x, y, z_peri_0, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
-ax = fig.add_subplot(222, projection='3d')
-surf = ax.plot_surface(x, y, z_peri_1, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+ax1.set_xlabel('Distancia ($m$)')
+ax1.set_ylabel('Distancia ($m$)')
+ax1.set_zlabel('Temperatura ($^o C$)')
+ax2 = fig.add_subplot(222, projection='3d')
+surf = ax2.plot_surface(x, y, z_peri_1, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
-ax = fig.add_subplot(223, projection='3d')
-surf = ax.plot_surface(x, y, z_peri_2, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+ax2.set_xlabel('Distancia ($m$)')
+ax2.set_ylabel('Distancia ($m$)')
+ax2.set_zlabel('Temperatura ($^o C$)')
+ax3 = fig.add_subplot(223, projection='3d')
+surf = ax3.plot_surface(x, y, z_peri_2, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
-ax = fig.add_subplot(224, projection='3d')
-surf = ax.plot_surface(x, y, z_peri_3, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
+ax3.set_xlabel('Distancia ($m$)')
+ax3.set_ylabel('Distancia ($m$)')
+ax3.set_zlabel('Temperatura ($^o C$)')
+ax4 = fig.add_subplot(224, projection='3d')
+surf = ax4.plot_surface(x, y, z_peri_3, rstride=1, cstride=1, cmap='hot', linewidth=0, antialiased=False)
 fig.colorbar(surf, shrink=0.5, aspect=5)
+ax4.set_xlabel('Distancia ($m$)')
+ax4.set_ylabel('Distancia ($m$)')
+ax4.set_zlabel('Temperatura ($^o C$)')
 plt.savefig('PDE_periodicas.pdf')
 
 #Promedios
 
-x_promedio = np.linspace(1,4,4)
-fijas_promedio = [np.sum(z_fijas_0)/250, np.sum(z_fijas_1)/250, np.sum(z_fijas_2)/250, np.sum(z_fijas_3)/250]
-abiertas_promedio = [np.sum(z_abiertas_0)/250, np.sum(z_abiertas_1)/250, np.sum(z_abiertas_2)/250, np.sum(z_abiertas_3)/250]
-peri_promedio = [np.sum(z_peri_0)/250, np.sum(z_peri_1)/250, np.sum(z_peri_2)/250, np.sum(z_peri_3)/250]
+x_promedio = [datos_PDE[50][0], datos_PDE[101][0], datos_PDE[152][0], datos_PDE[203][0]]
+fijas_promedio = [datos_PDE[50][1], datos_PDE[101][1], datos_PDE[152][1], datos_PDE[203][1]]
+abiertas_promedio = [datos_PDE[254][1], datos_PDE[305][1], datos_PDE[356][1], datos_PDE[407][1]]
+peri_promedio = [datos_PDE[458][1], datos_PDE[509][1], datos_PDE[560][1], datos_PDE[611][1]]
 
 plt.figure()
 plt.plot(x_promedio,fijas_promedio, label = 'Fronteras fijas', c='g')
@@ -123,6 +164,7 @@ plt.plot(x_promedio,abiertas_promedio, label = 'Fronteras abiertas', c='b')
 plt.plot(x_promedio,peri_promedio, label = 'Fronteras periodicas', c='c')
 plt.legend()
 plt.ylabel('Temperatura promedio ($^o C$)')
-plt.xlabel('Tiempo')
+plt.xlabel('Tiempo ($s$)')
 plt.savefig('PDE_promedio.pdf')
+
 
