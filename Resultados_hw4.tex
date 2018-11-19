@@ -4,10 +4,12 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage[spanish]{babel}
 
 \begin{document}
 
-\title{Tarea 4: Metodos Comutacionales \\ 2018-20}% Force line breaks with \\
+\title{Tarea 4: Metodos Computacionales \\ 2018-20}% Force line breaks with \\
 
 \author{Felipe Giraldo Grueso \\ 201631172}
 
@@ -15,57 +17,85 @@
 
 \maketitle
 
+En el siguiente documento podra encontrar el procedimiento seguido para el desarrollo de esta tarea, y de la misma manera, encontrara un breve analisis de los resultados encontrados.
+
 \section{Ecuaciones diferenciales ordinarias}
+
+Entonces, para este segmento, el procedimiento se dividio en dos partes, donde la primera se tuvo en cuenta solo un angulo ($45^\circ$) y para la segunda, se analizaron diferentes angulos de inicio. Es importante mencionar que para poder llevar a cabo estos puntos, se debio tener en cuenta los cambios de unidades para que estas coincidieran. De manera que todo se trabajo en el sistema $SI$.
 	\subsection{45 grados}
+
+		En la siguiente grafica, se puede apreciar el comportamiento del proyectil teniendo en cuenta una friccion con el aire proporcional al cuadrado de su velocidad.
 		\begin{figure}[H]
     			\begin{center}
-    				\includegraphics[scale = 0.7]{ODE_45.pdf}
-    				\caption{}
+    				\includegraphics[scale = 0.5]{ODE_45.pdf}
+    				\caption{Grafica del proyectil para un angulo inicial de $45^o$.}
 			\end{center}
     			\label{fig:45}
 		\end{figure}
 
+		Entonces, haciendo uso del programa $ODE.dat$ creado en $C++$, fue posible determinar la distancia recorrida por el proyectil en el eje $x$, siendo esta $3.96151 m$. De esta grafica, 			cabe resaltar el hecho de que la friccion, siendo proporcional al cuadrado de la velocidad, es bastante alta, ya que la distancia recorrida por el proyectil no es muy alta teniendo en 		cuenta su velocidad inicial de $300 m/s$.
+
 	\subsection{Todos los grados posibles}
+		Ahora bien, con el fin de poder identificar cual seria el inicial optimo para este movimiento, se calculo la trayectoria para diferentes angulos. El comportamiento de cada uno de estos 			se puede apreciar en la siguiente grafica.
 		\begin{figure}[H]
     			\centering
-    				\includegraphics[scale = 0.7]{ODE_todos.pdf}
-    				\caption{}
+    				\includegraphics[scale = 0.5]{ODE_todos.pdf}
+    				\caption{Grafica del proyectil para los angulos desde $10^o$ hasta $20^o$ en saltos de a $10^o$.}
     			\label{fig:todos}
 		\end{figure}
 
+		Entonces, teniendo en cuenta estos resultados, se comprobo que el angulo optimo, teniendo en cuenta el efecto de la friccion causada por el aire, es de $20^\circ$. Este resultado vuelve 			a comprobar la idea de que el efecto de la friccion causada por el aire es considerable debido a que si esta no existiera, el angulo optimo seria de $45^\circ$. Asi mismo, es importante 			mencionar que los angulos $10^\circ$ y $30^\circ$ tienen el mismo efecto en cuanto a la distancia recorrida en el eje $x$.
+
 
 \section{Ecuaciones diferenciales parciales}
+
+Ahora bien, con el fin de poder caracterizar el efecto de las condiciones de frontera al resolver una ecuacion diferencial parcial, se llevo a cabo la simulacion de una roca calcia con una barra metalica en el centro de esta. Entonces, este procedimiento se dividio en tres partes para poder resolver condiciones de fronteras fijas, abiertas y periodicas. Tal y como en el anterior punto, las unidades jugaron un rol importante en el desarrollo de este punto, por lo que nuevamente, todo se trabajo en el sistema $SI$.
 	\subsection{Fronteras fijas}
+
+		Asi pues, en la siguiente imagen se puede apreciar la evolucion de la temperatura en la calcita teniendo en cuenta las fronteras fijas a $10^\circ$. 
 		\begin{figure}[H]
     			\centering
-    				\includegraphics[scale = 0.5]{PDE_fijas.pdf}
-    				\caption{}
+    				\includegraphics[scale = 0.45]{PDE_fijas.pdf}
+    				\caption{Evolucion de temperatura en la calcita teniendo en cuenta las fronteras fijas a $10^o C$. En la imagen superior izquierda se puede apreciar las condiciones 						iniciales, en la imagen superior derecha se puede ver el primer estado intermedio, en la imagen inferior izquierda se puede ver el segundo estado intermedio, y 					por ultimo, en la imagen inferior derecha se puede apreciar la condicion de equilibrio.}
     			\label{fig:fijas}
 		\end{figure}
 
+		Sin duda alguna, el comportamiento en esta grafica es el esperado, pero para poder llegar a alguna conclusion, se debe tener en cuenta las otras dos condiciones mencionadas 			anteriormente. 
+
 	\subsection{Fronteras abiertas}
+
+		De la misma manera que en la anterior seccion, en la siguiente imagen se puede ver la evolucion de la temperatura en la calcita, pero en este caso teniendo en cuenta las fronteras 			abiertas.
 		\begin{figure}[H]
     			\centering
-    				\includegraphics[scale = 0.5]{PDE_abiertas.pdf}
-    				\caption{}
+    				\includegraphics[scale = 0.45]{PDE_abiertas.pdf}
+    				\caption{Evolucion de temperatura en la calcita teniendo en cuenta las fronteras abiertas. En la imagen superior izquierda se puede apreciar las condiciones iniciales, 					en la imagen superior derecha se puede ver el primer estado intermedio, en la imagen inferior izquierda se puede ver el segundo estado intermedio, y por ultimo, 						en la imagen inferior derecha se puede apreciar la condicion de equilibrio.}
     			\label{fig:abiertas}
 		\end{figure}
 
+		Nuevamente, el comportamiento que puede ser apreciado, es el esperado. A diferencia de la imagen \ref{fig:fijas}, se puede ver que cuando la roca alcanza una nocion de equilibrio, las 		fronteras tienen un movimiento como ondulatorio. 
 	\subsection{Fronteras periodicas}
+
+		Y por ultimo, en la siguiente imagen es posible apreciar la evolucion de la temperatura en la calcita teniendo en cuenta unas fronteras periodicas. Lo que esto significa, en pocas 			palabras, es que lo que sale por un lado, de cierta manera entra por el otro. 
 		\begin{figure}[H]
     			\centering
-    				\includegraphics[scale = 0.5]{PDE_periodicas.pdf}
-    				\caption{}
+    				\includegraphics[scale = 0.45]{PDE_periodicas.pdf}
+    				\caption{Evolucion de temperatura en la calcita teniendo en cuenta las fronteras periodicas. En la imagen superior izquierda se puede apreciar las condiciones iniciales, 						en la imagen superior derecha se puede ver el primer estado intermedio, en la imagen inferior izquierda se puede ver el segundo estado intermedio, y por ultimo, 						en la imagen inferior derecha se puede apreciar la condicion de equilibrio.}
     			\label{fig:periodicas}
 		\end{figure}
+
+		Teniendo en cuenta las anteriores graficas presentadas, siento estas las figuras \ref{fig:fijas} y \ref{fig:abiertas}, se ve un comportamiento un poco mas similar hacia las condiciones 			de frontera abiertas. Esto se debe a que, en pocas palabras, las fronteras en este caso tambien pueden "moverse" y ser influenciadas por sus vecinos. Pero, como se menciono 			anteriormente, para poder analizar de una manera correcta estos resultados, es necesario contrastarlos en una misma grafica, lo cual es presentado en la siguiente seccion. 
 	
 	\subsection{Promedios}
+
+		Entonces, para finalizar, en la siguiente imagen se puede ver la temperatura promedio de la roca, teniendo en cuenta cada una de las condiciones de frontera que fueron presentadas en 			secciones anteriores. 
 		\begin{figure}[H]
     			\centering
-    				\includegraphics[scale = 0.7]{PDE_promedio.pdf}
-    				\caption{}
-    			\label{fig:promedios}
+    				\includegraphics[scale = 0.5]{PDE_promedio.pdf}
+    				\caption{Grafica del promedio de la temperatura de la calcita teniendo en cuenta las diferentes condiciones de frontera propuestas anteriormente.}
+    			\label{fig:p}
 		\end{figure}
+
+		Como se puede apreciar, al inicio del proceso de difusion, el comportamiento de los tres casos es muy similar. Esto se debe a que en tiempos pequenhos, el cambio de temperatura todavia no ha llegado a las fronteras, lo cual hace que estas no tengan efecto alguno en cuanto al proceso de difusion. Ya cuando el tiempo es un poco mayor, el caso de condiciones periodicas se va separando de los otros dos, lo que hace pensar que la temperatura, cuando se tienen unas fronteras periodicas, aumenta de manera mas lenta en los alrededores de la fuente. Ahora bien, mirando un poco hacia los estados intermedios, se puede ver que el caso de las fronteras abiertas se empieza a separar de los demas, tomando valores mayores. Es posible que esto se deba al hecho de que como la fronteras estan abiertas, estas pueden tomar valores mayores, haciendo que el promedio suba, tal y como lo hace en la grafica propuesta. Para acabar, en cuanto a los estados de equilibrio de estos tres casos, se puede ver que la condicion de fronteras fijas toma el valor mas bajo debido a la restriccion que tiene. Es posble que esta restriccion lo contrareste el efecto que pueda tener la barra metalica en el centro de la roca. Y los dos casos restantes, es posible decir que estos tienden a converger al mismo valor debido a que tienen un comportamiento similar al final de las iteraciones propuestas. Para poder visualizar de mejor manera estas evoluciones, en los archivos guardados en su computador al ejecutar el make asociado a esta tarea, puede encontrar las animaciones en 3D correspondientes a cada caso.
 	
 \end{document}
 
